@@ -1,8 +1,9 @@
+<img src="NetXcanner v 1.02.png">
 <b>🛡️ NetXScanner  v 1.,0 (ARP Scanner)</b> 
-by <b><center>⚠️ by Rodolfo Hernández Baz</b> </center>
+<br><br>
 
 Una herramienta de línea de comandos ligera y eficiente escrita en Python para descubrir dispositivos conectados a tu red local.
-
+<br><bR>
 <b>📋 Tabla de Contenidos</b>
 
     --Características
