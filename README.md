@@ -1,4 +1,4 @@
-<b>🛡️ NetXScanner  v 1.,0 (ARP Scanner)</b>
+<b>🛡️ NetXScanner  v 1.,0 (ARP Scanner)</b> 
 
 Una herramienta de línea de comandos ligera y eficiente escrita en Python para descubrir dispositivos conectados a tu red local.
 
@@ -112,6 +112,7 @@ Esta herramienta se basa en el protocolo ARP (Address Resolution Protocol):
 <br>
 Este método es más rápido y fiable en redes locales que un escaneo tradicional de ping (ICMP), ya que la mayoría de los firewalls bloquean los pings, pero rara vez bloquean el tráfico ARP necesario para la comunicación de red. 
 <br><br>
+<b>Rodolfo Hernández Baz - rodolfohbaz@gmail.com</b>
 
 <b><center>⚠️ Advertencia Legal</b> </center>
 
