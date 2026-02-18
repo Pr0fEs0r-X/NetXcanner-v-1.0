@@ -1,4 +1,5 @@
 <b>🛡️ NetXScanner  v 1.,0 (ARP Scanner)</b> 
+by <b><center>⚠️ by Rodolfo Hernández Baz</b> </center>
 
 Una herramienta de línea de comandos ligera y eficiente escrita en Python para descubrir dispositivos conectados a tu red local.
 
@@ -117,5 +118,5 @@ Este método es más rápido y fiable en redes locales que un escaneo tradiciona
 
     Nota: Esta herramienta ha sido creada con fines educativos y de auditoría de redes propias. El uso de este software para escanear redes ajenas sin autorización expresa es ilegal. 
     El usuario es el único responsable del uso que haga de esta herramienta. Úsala siempre en tus propias redes o en redes donde tengas permiso.
-
-    <br> <b>Rodolfo Hernández Baz - rodolfohbaz@gmail.com</b>
+<br>
+   <b><center>⚠️ Rodolfo Hernandez Baz - rodolfohbaz@gmail.com</b> </center>
