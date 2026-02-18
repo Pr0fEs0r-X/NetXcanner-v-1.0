@@ -112,9 +112,10 @@ Esta herramienta se basa en el protocolo ARP (Address Resolution Protocol):
 <br>
 Este método es más rápido y fiable en redes locales que un escaneo tradicional de ping (ICMP), ya que la mayoría de los firewalls bloquean los pings, pero rara vez bloquean el tráfico ARP necesario para la comunicación de red. 
 <br><br>
-<b>Rodolfo Hernández Baz - rodolfohbaz@gmail.com</b>
 
 <b><center>⚠️ Advertencia Legal</b> </center>
 
     Nota: Esta herramienta ha sido creada con fines educativos y de auditoría de redes propias. El uso de este software para escanear redes ajenas sin autorización expresa es ilegal. 
     El usuario es el único responsable del uso que haga de esta herramienta. Úsala siempre en tus propias redes o en redes donde tengas permiso.
+
+    <br> <b>Rodolfo Hernández Baz - rodolfohbaz@gmail.com</b>
