@@ -1,123 +1,72 @@
-<img src="NetXcanner v 1.02.png">
-<b>🛡️ NetXScanner  v 1.,0 (ARP Scanner)</b> 
-<br><br>
 
-Una herramienta de línea de comandos ligera y eficiente escrita en Python para descubrir dispositivos conectados a tu red local.
-<br><bR>
-<b>📋 Tabla de Contenidos</b>
+<b>📝 Descripción</b>
 
-    --Características
-    --Requisitos Previos
-    --Instalación
-    --Uso
-    --Cómo Funciona
-    --Advertencia Legal
+NetXcanner es una aplicación de escritorio autónoma diseñada para el análisis y monitoreo de redes locales (LAN). Desarrollada íntegramente en Python, ofrece una interfaz gráfica moderna con una estética de tonos rojos, permitiendo a los administradores de red y entusiastas realizar un escaneo rápido y eficiente de todos los dispositivos conectados.
 
-<b>✨ Características Principales</b>
+La aplicación proporciona información crítica en tiempo real, como direcciones IP activas, direcciones MAC, nombres de host (Hostname) e integra herramientas de diagnóstico de red esenciales accesibles con un solo clic.
+✨ Características Principales
 
-    -- Detección Automática de Red: Identifica automáticamente el rango de IP local (subnet) sin configuración manual.
-    -- Descubrimiento ARP: Utiliza paquetes ARP para detectar dispositivos incluso si no responden a pings (ICMP).
-    -- Resolución de Hostnames: Intenta resolver el nombre del dispositivo (NetBIOS/DNS).
-    -- Direcciones MAC: Muestra la dirección física (MAC) de cada dispositivo conectado.
-    -- Argumentos Personalizables: Permite especificar manualmente el rango de red a escanear mediante flags.
-    Interfaz Clara: Salida tabulada y fácil de leer en la terminal.
+    Escaneo de Red (Ping Sweep): Detecta automáticamente todos los hosts activos en la subred local.
+    Resolución de Datos: Obtiene direcciones MAC y nombres de host (DNS) de los dispositivos detectados.
+    Splash Screen Interactivo: Presentación visual inicial con duración de 4 segundos.
+    Herramientas de Diagnóstico Integradas:
+        Ping: Verificación de conectividad continua.
+        Tracert: Trazado de ruta hasta el destino.
+        PathPing: Análisis de pérdida de paquetes en saltos intermedios.
+        NsLookup: Consulta de registros DNS.
+    Interfaz Intuitiva: Visualización en tabla con opciones de interacción mediante doble clic.
 
-<b>⚙️ Requisitos Previos</b>
+<b>🚀 Instalación y Ejecució</b>
 
-<b>Antes de ejecutar la aplicación, asegúrate de cumplir con lo siguiente:</b>
+Sigue estos pasos para ejecutar la aplicación en tu máquina local.
+Prerrequisitos
 
-    --Python 3.x instalado en tu sistema.
-    
-    --Permisos de Administrador:
-        Windows: Ejecutar la terminal (CMD/PowerShell) como Administrador.
-        Linux/macOS: Usar sudo.
-        
-    --Npcap (Windows): Es necesario instalar Npcap para que Scapy pueda inyectar paquetes. (Marca la opción "Install Npcap in WinPcap API-compatible Mode" durante la instalación).
-<br>
-<b>🚀 Instalación</b>
+    Python 3.x instalado en tu sistema.
+    (Opcional) Npcap instalado si se desean utilizar funciones de bajo nivel, aunque la versión actual utiliza comandos nativos del sistema para mayor compatibilidad.
 
-<b>Sigue estos pasos para configurar el entorno:</b>
+Pasos
 
-    1.- Clona el repositorio:
+    Clona el repositorio:
 
-    git clone https://github.com/tu-usuario/network-scanner.gitcd network-scanner
+    git clone https://github.com/tu-usuario/netxcanner.gitcd netxcanner
 
-    2.- Crea un entorno virtual (Opcional pero recomendado):
+    Instala las dependencias necesarias:La aplicación utiliza Pillow para el manejo de imágenes en la pantalla de bienvenida.
 
-    python -m venv venv# Windowsvenv\Scripts\activate# Linux/Macsource venv/bin/activate
+    pip install pillow
 
-    3.- Instala las dependencias:
+    Ejecuta la aplicación:Asegúrate de que la imagen NetXcanner v 1.0.png esté en el mismo directorio que el script.
 
-    pip install scapy
-<br>
-<b>💻 Uso</b>
+    python NetXcanner.py
 
-<b>El script es flexible y permite tanto el escaneo automático como el manual.</b>
+<b>⚙️ Técnicas Utilizadas</b>
 
---> Ver la ayuda (-h)
+El desarrollo de NetXcanner combina múltiples técnicas de programación y protocolos de red para lograr su funcionamiento:
+1. Interfaz Gráfica (GUI)
 
-<b>Para ver todas las opciones disponibles:</b>
+    Tkinter & ttk: Se utilizó la librería estándar tkinter para la estructura de la ventana, junto con ttk para widgets modernos (tablas, barras de progreso) y estilos personalizados mediante ttk.Style para lograr la estética de tonos rojos.
+    Multi-hilo (Threading): El escaneo de red y la ejecución de comandos de diagnóstico se realizan en hilos secundarios (threading.Thread y ThreadPoolExecutor). Esto es crucial para evitar que la interfaz gráfica se congele mientras se procesan largas listas de IPs o comandos lentos como tracert.
 
-python network_scanner.py -h
-<br>
- 
-<b>usage: network_scanner.py [-h] [-t RANGO]</b>
-<br>
-Escáner de Red Local (ARP Scanner). Detecta dispositivos activos, sus
-direcciones MAC y nombres de host.
+2. Escaneo de Red (Network Scanning)
 
-<br>
+    Ping Sweep Nativo: En lugar de depender de librerías externas complejas como Scapy, la aplicación utiliza el módulo subprocess para ejecutar comandos ping nativos del sistema operativo. Esto garantiza alta compatibilidad y evita problemas de permisos ("Raw Sockets") en Windows.
+    ThreadPoolExecutor: Se implementa un pool de 50 hilos concurrentes para realizar pings a múltiples direcciones IP simultáneamente, reduciendo drásticamente el tiempo de escaneo en redes /24.
 
-<b>options:</b>
-  -h, --help  show this help message and exit
-  -t RANGO    Especifica el rango de red a escanear en formato CIDR (ej:
-              192.168.1.0/24). Si no se especifica, se detecta automáticamente.
- 
-<br><b>-= Escaneo Automático =-</b>
+3. Resolución de Direcciones (Discovery)
 
-Detecta tu IP actual y escanea toda tu subred automáticamente: 
+    ARP Caching: Para obtener las direcciones MAC, la aplicación interactúa con la tabla ARP del sistema operativo. Ejecuta el comando arp -a y utiliza Expresiones Regulares (Regex) para parsear la salida de texto y extraer las direcciones MAC dinámicamente.
+    DNS Reverso: Se utiliza la librería socket de Python (socket.gethostbyaddr) para resolver las direcciones IP a nombres de host, facilitando la identificación de dispositivos.
 
-Windows (CMD como Admin): 
-cmd
- 
-python network_scanner.py
+4. Procesamiento de Comandos
 
-<br><br>
+    Pipes y Subprocess: Las herramientas interactivas (Ping, Tracert, etc.) se ejecutan mediante subprocess.Popen. Se utiliza stdout=PIPE para capturar la salida en tiempo real y creationflags=CREATE_NO_WINDOW para ejecutar los comandos de consola sin mostrar ventanas negras emergentes en Windows, integrando el resultado limpiamente en la interfaz de la aplicación.
 
-****************************
-<b>Linux / macOS:</b> 
-****************************
-<br>
-bash
- 
-sudo python3 network_scanner.py
- 
- <br>
-<b>-= Escaneo Dirigido =- </b>
+<b>👨‍💻 Autor</b>
 
-Especifica un rango de red concreto usando notación CIDR: 
-bash
- <br>
- 
-[*] Tu IP local parece ser: 192.168.1.50
-[*] Escaneando la red: 192.168.1.0/24 ...
+Rodolfo Hernandez Baz   AkA Pr@fEs0r X
 
-<br> <br>
- 
-<b>🔩 ¿Cómo Funciona?</b> 
+    Desarrollado como herramienta de apoyo para administradores de red.
+    Contacto: [rodolfohbaz@gmail.com]
 
-Esta herramienta se basa en el protocolo ARP (Address Resolution Protocol): 
+<b>📜 Licencia</b>
 
-    -- Broadcast: El script envía un paquete Ethernet de difusión (broadcast) preguntando: "¿Quién tiene la IP X?". 
-    -- Respuesta: Los dispositivos activos en la red responden con su dirección MAC: "Yo tengo la IP X y mi MAC es Y". 
-    -- Resolución de Nombres: Paralelamente, el script utiliza socket para realizar consultas DNS inversas y obtener el nombre del host (hostname). 
-<br>
-Este método es más rápido y fiable en redes locales que un escaneo tradicional de ping (ICMP), ya que la mayoría de los firewalls bloquean los pings, pero rara vez bloquean el tráfico ARP necesario para la comunicación de red. 
-<br><br>
-
-<b><center>⚠️ Advertencia Legal</b> </center>
-
-    Nota: Esta herramienta ha sido creada con fines educativos y de auditoría de redes propias. El uso de este software para escanear redes ajenas sin autorización expresa es ilegal. 
-    El usuario es el único responsable del uso que haga de esta herramienta. Úsala siempre en tus propias redes o en redes donde tengas permiso.
-<br>
-   <b><center>⚠️ Rodolfo Hernandez Baz - rodolfohbaz@gmail.com</b> </center>
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
