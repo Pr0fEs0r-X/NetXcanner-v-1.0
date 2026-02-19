@@ -95,7 +95,7 @@ Nota: El ejecutable generado se encontrará dentro de la carpeta dist/.
 Rodolfo Hernandez Baz 
 
      Email: rodolfohbaz@gmail.com 
-     GitHub: [Tu Usuario de GitHub]
+     GitHub: [https://github.com/Pr0fEs0r-X]
      
 
 ## 📜 Licencia 
