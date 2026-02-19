@@ -6,7 +6,7 @@ NetXcanner es una herramienta de escaneo de red multiplataforma, rápida y visua
 
 
 
-![v](https://github.com/user-attachments/assets/663e0285-9de5-41e6-b4f7-299233ad9742)
+
 
 
 
