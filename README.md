@@ -34,9 +34,7 @@ NetXcanner es una herramienta de escaneo de red multiplataforma, rápida y visua
 
 ## ⚙️ Instalación y Uso (Desde Código Fuente)
 
-   `-` Clonar el repositorio:
 
-  `-` git clone https://github.com/tu_usuario/netxcanner.gitcd netxcanner
 
    ### Instalar dependencias:
 
