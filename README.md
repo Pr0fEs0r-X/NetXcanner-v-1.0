@@ -62,7 +62,7 @@ bash
  
   
  
-pyinstaller --onefile --windowed --add-data "NetXcanner v 1.0.png;." main.py
+pyinstaller --onefile --windowed --add-data "NetXcanner v 1.0.png;." app.py
  
  
  
@@ -73,7 +73,7 @@ bash
  
   
  
-pyinstaller --onefile --windowed --add-data "NetXcanner v 1.0.png:." main.py
+pyinstaller --onefile --windowed --add-data "NetXcanner v 1.0.png:." app.py
  
  
  
