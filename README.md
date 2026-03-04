@@ -1,6 +1,7 @@
 <img width="200" height="200" alt="NetXcanner v 1 0" src="https://github.com/user-attachments/assets/543255d6-2434-407e-8e7f-55a727eb8ebe" />
 
 # NetXcanner v1.0
+<br>![Made with Python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg?logo=python&logoColor=white)
 
 NetXcanner es una herramienta de escaneo de red multiplataforma, rápida y visualmente amigable, desarrollada en Python. Permite descubrir dispositivos en una red local, identificar sus sistemas operativos, fabricantes y proporcionar herramientas de diagnóstico integradas.
 
